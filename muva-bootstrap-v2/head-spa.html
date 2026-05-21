@@ -107,15 +107,43 @@
                     <div class="col-lg-6 offset-lg-1 booking-form-column">
                         <h2>Book your experience!</h2>
                         <p>Choose the treatment, day, and time that best suit you.</p>
+                        <form class="booking-form" action="https://formspree.io/f/mdajgwdy" method="POST">
+                            <input type="hidden" name="website" value="MUVA Aesthetics">
+                            <input type="hidden" name="form_type" value="Booking request">
 
-                        <form>
-                            <label>Name:<input type="text" aria-label="Name"></label>
-                            <label>Phone:<input type="tel" aria-label="Phone"></label>
-                            <label>Email:<input type="email" aria-label="Email"></label>
-                            <label>Service:<input type="text" aria-label="Service"></label>
-                            <label>Date:<input type="text" aria-label="Date"></label>
-                            <label>Hora:<input type="text" aria-label="Hora"></label>
+                            <label>
+                                Name:
+                                <input type="text" name="name" aria-label="Name" required>
+                            </label>
+
+                            <label>
+                                Phone:
+                                <input type="tel" name="phone" aria-label="Phone" required>
+                            </label>
+
+                            <label>
+                                Email:
+                                <input type="email" name="email" aria-label="Email" required>
+                            </label>
+
+                            <label>
+                                Service:
+                                <input type="text" name="service" aria-label="Service" required>
+                            </label>
+
+                            <label>
+                                Date:
+                                <input type="text" name="date" aria-label="Date" required>
+                            </label>
+
+                            <label>
+                                Hora:
+                                <input type="text" name="time" aria-label="Hora" required>
+                            </label>
+
                             <button class="btn muva-btn" type="submit">Submit contact request</button>
+
+                            <p class="booking-form-message" aria-live="polite"></p>
                         </form>
                     </div>
 
