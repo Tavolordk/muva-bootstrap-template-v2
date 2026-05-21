@@ -1909,3 +1909,144 @@ body {
     font-size: 23px;
   }
 }
+/* =========================
+   GLOBAL SECTION WIDTH FIX
+========================= */
+
+.muva-container {
+  width: min(100% - 48px, 1210px);
+  max-width: 1210px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Todos los paneles principales deben medir lo mismo */
+.hero-card,
+.about-card,
+.experience-card,
+.booking-card,
+.footer-card {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Corrige cards que antes tenían márgenes laterales distintos */
+.hero-card {
+  margin: 0;
+}
+
+.about-card {
+  margin: 0;
+}
+
+.experience-card {
+  margin: 0;
+}
+
+.booking-card {
+  margin: 0;
+}
+
+.footer-card {
+  margin: 0;
+}
+
+/* Servicios y páginas internas centradas, pero dentro del mismo ancho global */
+.services-container,
+.facials-page-container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Footer alineado al mismo ancho que booking */
+.footer-section .muva-container {
+  width: min(100% - 48px, 1210px);
+  max-width: 1210px;
+}
+
+/* Booking alineado al mismo ancho que footer */
+.booking-section .muva-container {
+  width: min(100% - 48px, 1210px);
+  max-width: 1210px;
+}
+
+/* Hero alineado al mismo ancho que el resto */
+.hero-section .muva-container {
+  width: min(100% - 48px, 1210px);
+  max-width: 1210px;
+}
+
+/* About alineado al mismo ancho */
+.about-section .muva-container {
+  width: min(100% - 48px, 1210px);
+  max-width: 1210px;
+}
+
+/* Experience alineado al mismo ancho */
+.experience-section .muva-container {
+  width: min(100% - 48px, 1210px);
+  max-width: 1210px;
+}
+
+/* Testimonials alineado al mismo ancho */
+.testimonials-section .muva-container {
+  width: min(100% - 48px, 1210px);
+  max-width: 1210px;
+}
+
+/* Search results alineado al mismo ancho */
+.search-results-section .muva-container {
+  width: min(100% - 48px, 1210px);
+  max-width: 1210px;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .muva-container,
+  .hero-section .muva-container,
+  .about-section .muva-container,
+  .experience-section .muva-container,
+  .booking-section .muva-container,
+  .footer-section .muva-container,
+  .testimonials-section .muva-container,
+  .search-results-section .muva-container {
+    width: min(100% - 32px, 720px);
+  }
+}
+
+@media (max-width: 575px) {
+  .muva-container,
+  .hero-section .muva-container,
+  .about-section .muva-container,
+  .experience-section .muva-container,
+  .booking-section .muva-container,
+  .footer-section .muva-container,
+  .testimonials-section .muva-container,
+  .search-results-section .muva-container {
+    width: calc(100% - 24px);
+  }
+}
+@media (max-width: 991px) {
+  .testimonial-slider {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .testimonial-slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .testimonial-controls {
+    z-index: 20;
+    pointer-events: auto;
+  }
+
+  .testimonial-control {
+    pointer-events: auto;
+  }
+}
