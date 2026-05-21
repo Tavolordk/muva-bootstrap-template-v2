@@ -106,3 +106,71 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+const bookingForms = document.querySelectorAll(".booking-form");
+
+bookingForms.forEach((form) => {
+  const message = form.querySelector(".booking-form-message");
+  const submitButton = form.querySelector('button[type="submit"]');
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (!form.action || form.action.includes("TU_ID_DE_FORMSPREE")) {
+      if (message) {
+        message.textContent =
+          "Please configure the Formspree endpoint before sending.";
+        message.classList.remove("is-success");
+        message.classList.add("is-error");
+      }
+      return;
+    }
+
+    const formData = new FormData(form);
+
+    if (message) {
+      message.textContent = "Sending request...";
+      message.classList.remove("is-success", "is-error");
+    }
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+    }
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Form submission failed");
+      }
+
+      form.reset();
+
+      if (message) {
+        message.textContent =
+          "Your request was sent successfully. We will contact you soon.";
+        message.classList.remove("is-error");
+        message.classList.add("is-success");
+      }
+    } catch (error) {
+      if (message) {
+        message.textContent =
+          "There was a problem sending your request. Please try again.";
+        message.classList.remove("is-success");
+        message.classList.add("is-error");
+      }
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = "Submit contact request";
+      }
+    }
+  });
+});
