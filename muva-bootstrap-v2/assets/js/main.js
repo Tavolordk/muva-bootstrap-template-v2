@@ -10,12 +10,28 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
   });
 });
 document.addEventListener("DOMContentLoaded", () => {
-  const facialCards = document.querySelectorAll(".facial-option-card");
+  const cards = document.querySelectorAll(".facial-option-card");
 
-  facialCards.forEach((card) => {
+  const toggleActiveCard = (selectedCard) => {
+    const isAlreadyActive = selectedCard.classList.contains("is-active");
+
+    cards.forEach((card) => card.classList.remove("is-active"));
+
+    if (!isAlreadyActive) {
+      selectedCard.classList.add("is-active");
+    }
+  };
+
+  cards.forEach((card) => {
     card.addEventListener("click", () => {
-      facialCards.forEach((item) => item.classList.remove("is-active"));
-      card.classList.add("is-active");
+      toggleActiveCard(card);
+    });
+
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleActiveCard(card);
+      }
     });
   });
 });
