@@ -40,7 +40,20 @@
                         <li class="nav-item"><a class="nav-link" href="index.html#about">About us</a></li>
                         <li class="nav-item"><a class="nav-link" href="index.html#services">Services</a></li>
                         <li class="nav-item"><a class="nav-link" href="#reservation">Reservation</a></li>
-                        <li class="nav-item search-item"><span>Search</span><i></i></li>
+                        <li class="nav-item search-item">
+                            <form class="site-search-form" role="search">
+                                <span class="site-search-label">Search</span>
+
+                                <label class="visually-hidden" for="siteSearchInput">Search services</label>
+
+                                <input id="siteSearchInput" class="site-search-input" type="search" autocomplete="off"
+                                    aria-label="Search services">
+
+                                <button class="site-search-clear" type="button" aria-label="Clear search">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -54,6 +67,26 @@
     </aside>
 
     <main>
+        <section class="search-results-section" id="searchResultsSection" hidden>
+            <div class="container muva-container">
+                <div class="search-results-card">
+                    <div class="search-results-header">
+                        <h2>Search results</h2>
+                        <p id="searchResultsCounter"></p>
+                    </div>
+
+                    <div class="search-results-list" id="searchResultsList"></div>
+
+                    <article class="search-not-found" id="searchNotFound" hidden>
+                        <h3>Not found</h3>
+                        <p>
+                            We couldn’t find anything related to your search. Try looking for services like
+                            facials, botox, fillers, PRP, massage, keratine or Japanese Head Spa.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
         <section class="facials-page-section page-block compact-block">
             <div class="container muva-container facials-page-container">
                 <div class="service-detail-heading">

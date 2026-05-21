@@ -228,3 +228,264 @@ if (heroSlides.length && heroDots.length) {
 
   startHeroAutoplay();
 }
+const searchData = [
+  {
+    title: "Facials",
+    category: "Service",
+    description:
+      "Signature Glow Facial, Deep Cleansing Facial, Hydrating Glow Facial and Rejuvenating Anti-Aging Facial.",
+    url: "facials.html",
+    keywords: [
+      "facial",
+      "facials",
+      "glow",
+      "skin",
+      "cleansing",
+      "hydrating",
+      "anti aging",
+      "rejuvenating",
+    ],
+  },
+  {
+    title: "Japanese Head Spa",
+    category: "Service",
+    description:
+      "Deluxe, Classic and hydrating scalp treatments focused on relaxation, hair care and scalp wellness.",
+    url: "head-spa.html",
+    keywords: [
+      "japanese",
+      "head spa",
+      "spa",
+      "scalp",
+      "hair",
+      "massage",
+      "deluxe",
+      "classic",
+    ],
+  },
+  {
+    title: "Keratine Hair Treatment",
+    category: "Service",
+    description:
+      "Organic and Botox hair treatments designed to smooth, hydrate and reduce frizz.",
+    url: "keratine.html",
+    keywords: [
+      "keratine",
+      "keratin",
+      "hair",
+      "organic",
+      "botox hair",
+      "frizz",
+      "smooth",
+    ],
+  },
+  {
+    title: "Massage",
+    category: "Service",
+    description:
+      "Essential massage focused on relaxation, tension relief and body balance.",
+    url: "massage.html",
+    keywords: [
+      "massage",
+      "essential massage",
+      "relax",
+      "relaxation",
+      "body",
+      "stress",
+    ],
+  },
+  {
+    title: "Botox",
+    category: "Service",
+    description:
+      "Aesthetic treatment to soften fine lines and wrinkles with a smoother, youthful look.",
+    url: "botox.html",
+    keywords: ["botox", "wrinkles", "fine lines", "aesthetic", "youthful"],
+  },
+  {
+    title: "Derma Fillers",
+    category: "Service",
+    description:
+      "Dermal fillers for upper face, lower face and lips, focused on volume and facial definition.",
+    url: "fillers.html",
+    keywords: [
+      "fillers",
+      "dermal fillers",
+      "lips",
+      "jawline",
+      "volume",
+      "face",
+    ],
+  },
+  {
+    title: "PRP & Microneedling",
+    category: "Service",
+    description:
+      "PRP treatment to support collagen, skin texture, tone and rejuvenation.",
+    url: "prp.html",
+    keywords: [
+      "prp",
+      "platelet",
+      "plasma",
+      "microneedling",
+      "collagen",
+      "skin texture",
+    ],
+  },
+  {
+    title: "IV Therapy",
+    category: "Service",
+    description: "Wellness therapy focused on hydration, energy and recovery.",
+    url: "head-spa.html",
+    keywords: [
+      "iv therapy",
+      "iv",
+      "therapy",
+      "hydration",
+      "energy",
+      "wellness",
+    ],
+  },
+  {
+    title: "Book your experience",
+    category: "Reservation",
+    description:
+      "Send a booking request with your name, phone, email, service, date and time.",
+    url: "#reservation",
+    keywords: [
+      "booking",
+      "book",
+      "reservation",
+      "appointment",
+      "contact",
+      "date",
+      "time",
+    ],
+  },
+  {
+    title: "About MUVA",
+    category: "Section",
+    description:
+      "Premium aesthetic care with advanced technology and personalized treatments.",
+    url: "#about",
+    keywords: [
+      "about",
+      "muva",
+      "aesthetics",
+      "beauty",
+      "technology",
+      "personalized care",
+    ],
+  },
+];
+
+const searchInput = document.querySelector("#siteSearchInput");
+const searchClearButton = document.querySelector(".site-search-clear");
+const searchResultsSection = document.querySelector("#searchResultsSection");
+const searchResultsList = document.querySelector("#searchResultsList");
+const searchNotFound = document.querySelector("#searchNotFound");
+const searchResultsCounter = document.querySelector("#searchResultsCounter");
+
+const normalizeText = (text) => {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim();
+};
+
+const renderSearchResults = (query) => {
+  if (
+    !searchInput ||
+    !searchResultsSection ||
+    !searchResultsList ||
+    !searchNotFound
+  ) {
+    return;
+  }
+
+  const cleanQuery = normalizeText(query);
+
+  if (!cleanQuery) {
+    searchResultsSection.hidden = true;
+    searchResultsList.innerHTML = "";
+    searchNotFound.hidden = true;
+
+    if (searchClearButton) {
+      searchClearButton.classList.remove("is-visible");
+    }
+
+    return;
+  }
+
+  if (searchClearButton) {
+    searchClearButton.classList.add("is-visible");
+  }
+
+  const results = searchData.filter((item) => {
+    const searchableText = normalizeText(
+      [
+        item.title,
+        item.category,
+        item.description,
+        item.keywords.join(" "),
+      ].join(" "),
+    );
+
+    return searchableText.includes(cleanQuery);
+  });
+
+  searchResultsSection.hidden = false;
+  searchResultsList.innerHTML = "";
+
+  if (results.length === 0) {
+    searchNotFound.hidden = false;
+
+    if (searchResultsCounter) {
+      searchResultsCounter.textContent = `No results for "${query}".`;
+    }
+
+    return;
+  }
+
+  searchNotFound.hidden = true;
+
+  if (searchResultsCounter) {
+    searchResultsCounter.textContent = `${results.length} result${results.length === 1 ? "" : "s"} found for "${query}".`;
+  }
+
+  const resultHtml = results
+    .map((item) => {
+      return `
+        <a class="search-result-item" href="${item.url}">
+          <span>${item.category}</span>
+          <h3>${item.title}</h3>
+          <p>${item.description}</p>
+        </a>
+      `;
+    })
+    .join("");
+
+  searchResultsList.innerHTML = resultHtml;
+};
+
+if (searchInput) {
+  searchInput.addEventListener("input", (event) => {
+    renderSearchResults(event.target.value);
+  });
+
+  searchInput.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      searchInput.value = "";
+      renderSearchResults("");
+    }
+  });
+}
+
+if (searchClearButton && searchInput) {
+  searchClearButton.addEventListener("click", () => {
+    searchInput.value = "";
+    renderSearchResults("");
+    searchInput.focus();
+  });
+}
