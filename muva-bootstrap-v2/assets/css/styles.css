@@ -1276,3 +1276,24 @@ body {
     display: none;
   }
 }
+.facial-option-card h3 small {
+  display: block;
+  font-size: 11px;
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+}
+.facial-option-card .treatment-note {
+  display: none;
+  font-size: 7px;
+  line-height: 1.1;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-top: 18px;
+}
+
+.facial-option-card:hover .treatment-note,
+.facial-option-card:focus .treatment-note,
+.facial-option-card.is-active .treatment-note {
+  display: block;
+}
