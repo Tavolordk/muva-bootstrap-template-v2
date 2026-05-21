@@ -130,6 +130,10 @@ body {
   font-size: 13px;
 }
 
+/* =========================
+   HERO
+========================= */
+
 .hero-section {
   min-height: 612px;
   padding-top: 155px;
@@ -139,10 +143,13 @@ body {
   height: 318px;
   margin: 0 18px;
   position: relative;
+  overflow: visible;
 }
 
 .hero-copy {
   padding: 78px 0 0 86px;
+  position: relative;
+  z-index: 3;
 }
 
 .hero-copy h1 {
@@ -184,17 +191,20 @@ body {
 
 .hero-model {
   position: absolute;
-  right: 90px;
-  top: 38px;
-  width: min(590px, 52vw);
+  right: 95px;
+  top: 65px;
+  width: min(520px, 45vw);
   z-index: 2;
+  pointer-events: none;
 }
 
 .slider-dots {
   display: flex;
   gap: 13px;
   justify-content: center;
-  margin-top: 34px;
+  position: relative;
+  z-index: 5;
+  margin-top: 95px;
 }
 
 .slider-dots span {
@@ -203,6 +213,10 @@ body {
   border-radius: 50%;
   background: var(--muva-beige);
 }
+
+/* =========================
+   ABOUT
+========================= */
 
 .about-section {
   padding-top: 70px;
@@ -214,7 +228,8 @@ body {
   padding: 50px 70px;
 }
 
-.about-video {
+.about-video,
+.about-img {
   width: 430px;
   max-width: 100%;
   height: 200px;
@@ -238,6 +253,10 @@ body {
   max-width: 420px;
   margin: 0;
 }
+
+/* =========================
+   RESULTS
+========================= */
 
 .results-section h2 {
   font-size: 34px;
@@ -286,6 +305,10 @@ body {
   max-width: 490px;
 }
 
+/* =========================
+   SERVICES HOME
+========================= */
+
 .services-section {
   padding-top: 88px;
   min-height: 640px;
@@ -303,17 +326,32 @@ body {
   margin-bottom: 30px;
 }
 
+.services-grid,
 .services-section .row {
   --bs-gutter-x: 10px;
   --bs-gutter-y: 20px;
 }
 
 .service-card {
+  position: relative;
+  background: transparent;
+  border-radius: 0;
+  height: auto;
+  padding: 0;
+  overflow: visible;
+}
+
+.service-content-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.service-card-body {
   background: #f1e7e1;
   border-radius: 17px;
-  height: 190px;
-  padding: 13px 9px 0;
-  position: relative;
+  height: 165px;
+  padding: 13px 9px 10px;
   overflow: hidden;
 }
 
@@ -334,7 +372,7 @@ body {
   display: block;
 }
 
-.service-card a {
+.service-more {
   height: 27px;
   border-radius: 999px;
   background: #d6c5b8;
@@ -344,24 +382,113 @@ body {
   place-items: center;
   font-size: 11px;
   font-weight: 800;
-  margin: 8px -7px 0;
+  margin-top: 5px;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
-.service-card a:hover {
+.service-card:hover .service-more,
+.service-card:focus-within .service-more,
+.service-more:hover,
+.service-more:focus {
   background: #111;
   color: #fff;
 }
 
-.service-card::after {
-  content: "";
-  position: absolute;
-  left: 8px;
-  right: 8px;
-  bottom: -9px;
-  height: 13px;
-  border-radius: 50% 50% 0 0;
-  background: #d6c5b8;
+/* =========================
+   FACIALS PAGE
+========================= */
+
+.facials-page-section {
+  padding-top: 145px;
+  min-height: 535px;
 }
+
+.facials-page-container {
+  max-width: 900px;
+}
+
+.service-detail-heading {
+  text-align: center;
+  margin-bottom: 34px;
+}
+
+.service-detail-heading h1,
+.service-detail-heading h2 {
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 800;
+  margin: 0 0 12px;
+}
+
+.service-detail-heading p {
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 800;
+  color: #222;
+  margin: 0;
+}
+
+.facial-options-row {
+  --bs-gutter-x: 12px;
+  --bs-gutter-y: 22px;
+  align-items: flex-start;
+}
+
+.facial-option-card {
+  background: #f1e7e1;
+  border-radius: 18px;
+  padding: 15px 10px 12px;
+  min-height: 192px;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  transition:
+    min-height 0.25s ease,
+    transform 0.2s ease;
+}
+
+.facial-option-card h3 {
+  font-size: 17px;
+  line-height: 0.98;
+  font-weight: 800;
+  margin: 0 0 10px;
+  letter-spacing: -0.4px;
+}
+
+.facial-option-card img {
+  width: 100%;
+  height: 132px;
+  border-radius: 13px;
+  object-fit: cover;
+  display: block;
+}
+
+.facial-option-card p {
+  display: none;
+  font-size: 10px;
+  line-height: 1.15;
+  font-weight: 700;
+  color: #111;
+  margin: 10px 0 0;
+}
+
+.facial-option-card:hover,
+.facial-option-card:focus,
+.facial-option-card.is-active {
+  min-height: 275px;
+}
+
+.facial-option-card:hover p,
+.facial-option-card:focus p,
+.facial-option-card.is-active p {
+  display: block;
+}
+
+/* =========================
+   EXPERIENCE
+========================= */
 
 .experience-section {
   min-height: 510px;
@@ -394,6 +521,10 @@ body {
   position: relative;
   z-index: 3;
 }
+
+/* =========================
+   TESTIMONIALS
+========================= */
 
 .testimonials-section {
   padding-top: 30px;
@@ -478,6 +609,10 @@ body {
   margin: 0;
 }
 
+/* =========================
+   BOOKING
+========================= */
+
 .booking-section {
   padding-top: 70px;
 }
@@ -550,6 +685,10 @@ body {
   max-width: 43%;
   z-index: 1;
 }
+
+/* =========================
+   FOOTER
+========================= */
 
 .footer-section {
   padding: 80px 0 0;
@@ -664,6 +803,10 @@ body {
   white-space: nowrap;
 }
 
+/* =========================
+   RESPONSIVE
+========================= */
+
 @media (max-width: 1199px) {
   .brand {
     margin-left: 20px;
@@ -673,16 +816,18 @@ body {
     left: 22px;
   }
 
-  .hero-model {
-    right: 20px;
-  }
-
   .about-card {
     margin: 0 30px;
   }
 
   .testimonial-row {
     margin-left: 90px;
+  }
+
+  .booking-model {
+    right: 80px;
+    width: 420px;
+    max-width: 42%;
   }
 
   .footer-card {
@@ -737,234 +882,6 @@ body {
 
   .hero-section {
     min-height: auto;
-    padding-top: 145px;
-  }
-
-  .hero-card {
-    height: auto;
-    margin: 0;
-    padding: 300px 25px 35px;
-  }
-
-  .hero-copy {
-    padding: 0;
-    text-align: center;
-  }
-
-  .hero-model {
-    top: 95px;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: min(520px, 90vw);
-  }
-
-  .about-card {
-    margin: 0;
-    padding: 35px 25px;
-    text-align: center;
-  }
-
-  .about-card p {
-    margin: auto;
-  }
-
-  .about-card h2 {
-    font-size: 36px;
-  }
-
-  .result-list {
-    max-width: 640px;
-    margin: auto;
-  }
-
-  .services-section {
-    padding-top: 70px;
-    min-height: auto;
-  }
-
-  .services-container {
-    max-width: 720px;
-  }
-
-  .service-card {
-    height: 185px;
-  }
-
-  .experience-model {
-    left: 0;
-    width: 92vw;
-  }
-
-  .testimonial-row {
-    margin-left: 0;
-    overflow-x: auto;
-    padding-bottom: 12px;
-  }
-
-  .booking-card {
-    margin: 0;
-    padding: 35px 25px;
-  }
-
-  .footer-card {
-    text-align: center;
-  }
-
-  .footer-logo {
-    margin: auto;
-  }
-
-  .map-img {
-    margin-top: 20px;
-  }
-}
-
-@media (max-width: 575px) {
-  body {
-    font-size: 13px;
-  }
-
-  .brand span {
-    font-size: 50px;
-  }
-
-  .brand small {
-    font-size: 13px;
-  }
-
-  .page-block {
-    padding-top: 115px;
-  }
-
-  .hero-model {
-    top: 100px;
-  }
-
-  .hero-card {
-    padding-top: 245px;
-    border-radius: 24px;
-  }
-
-  .hero-copy h1 {
-    font-size: 25px;
-  }
-
-  .hero-copy p {
-    font-size: 11px;
-  }
-
-  .muva-btn {
-    padding: 14px 24px;
-  }
-
-  .slider-dots span {
-    width: 21px;
-    height: 21px;
-  }
-
-  .about-video {
-    height: 150px;
-  }
-
-  .about-card h2 {
-    font-size: 30px;
-  }
-
-  .results-section h2 {
-    font-size: 28px;
-  }
-
-  .result-item {
-    align-items: flex-start;
-  }
-
-  .services-section {
-    padding-top: 45px;
-  }
-
-  .services-section .section-title {
-    font-size: 24px;
-    margin-bottom: 22px;
-  }
-
-  .services-section .row {
-    --bs-gutter-x: 12px;
-    --bs-gutter-y: 18px;
-  }
-
-  .service-card {
-    height: 165px;
-    border-radius: 15px;
-    padding: 11px 8px 0;
-  }
-
-  .service-card h3 {
-    font-size: 12px;
-    min-height: 29px;
-  }
-
-  .service-card img {
-    height: 85px;
-    border-radius: 10px;
-  }
-
-  .service-card a {
-    height: 25px;
-    font-size: 10px;
-  }
-
-  .experience-section h2 {
-    font-size: 22px;
-    margin-bottom: 44px;
-  }
-
-  .experience-card {
-    height: 130px;
-  }
-
-  .experience-model {
-    top: 160px;
-  }
-
-  .experience-btn {
-    margin-top: 55px;
-  }
-
-  .testimonial-title-card,
-  .testimonial-card {
-    width: 190px;
-  }
-
-  .booking-card h2 {
-    font-size: 22px;
-  }
-
-  .booking-card label {
-    font-size: 12px;
-  }
-
-  .footer-card {
-    padding: 30px 18px;
-  }
-
-  .footer-logo span {
-    font-size: 54px;
-  }
-
-  .hours,
-  .footer-card p,
-  .footer-menu a,
-  .address {
-    font-size: 14px !important;
-  }
-
-  .social-rail {
-    display: none;
-  }
-}
-@media (max-width: 991px) {
-  .hero-section {
     padding-top: 135px;
   }
 
@@ -1008,65 +925,74 @@ body {
     max-width: 460px;
     margin: 12px auto 20px;
   }
-}
 
-@media (max-width: 575px) {
-  .hero-section {
-    padding-top: 125px;
+  .about-card {
+    margin: 0;
+    padding: 35px 25px;
+    text-align: center;
   }
 
-  .hero-card {
-    min-height: 560px;
-    padding: 34px 18px 32px;
-    border-radius: 30px;
+  .about-card p {
+    margin: auto;
   }
 
-  .hero-model {
-    width: min(400px, 96vw);
-    margin: 0 auto 18px;
+  .about-card h2 {
+    font-size: 36px;
   }
 
-  .hero-copy h1 {
-    font-size: 25px;
-    line-height: 1.08;
+  .about-video,
+  .about-img {
+    margin: auto;
   }
 
-  .hero-copy p {
-    font-size: 11px;
-    line-height: 1.35;
+  .result-list {
+    max-width: 640px;
+    margin: auto;
   }
 
-  .slider-dots {
-    margin-top: 28px;
-  }
-}
-@media (min-width: 992px) {
-  .hero-card {
-    height: 318px;
-    overflow: visible;
+  .services-section {
+    padding-top: 70px;
+    min-height: auto;
   }
 
-  .hero-model {
-    position: absolute;
-    right: 95px;
-    top: 65px;
-    width: min(520px, 45vw);
-    z-index: 2;
-    pointer-events: none;
+  .services-container {
+    max-width: 720px;
   }
 
-  .slider-dots {
-    position: relative;
-    z-index: 5;
-    margin-top: 95px;
+  .service-card-body {
+    height: 160px;
   }
-}
-.booking-form-column {
-  position: relative;
-  z-index: 2;
-}
 
-@media (max-width: 991px) {
+  .facials-page-section {
+    padding-top: 145px;
+    min-height: auto;
+  }
+
+  .facials-page-container {
+    max-width: 720px;
+  }
+
+  .facial-option-card img {
+    height: 120px;
+  }
+
+  .facial-option-card:hover,
+  .facial-option-card:focus,
+  .facial-option-card.is-active {
+    min-height: 270px;
+  }
+
+  .experience-model {
+    left: 0;
+    width: 92vw;
+  }
+
+  .testimonial-row {
+    margin-left: 0;
+    overflow-x: auto;
+    padding-bottom: 12px;
+  }
+
   .booking-card {
     margin: 0;
     padding: 35px 25px;
@@ -1080,83 +1006,7 @@ body {
   .booking-model {
     display: none;
   }
-}
 
-@media (max-width: 575px) {
-  .booking-card {
-    padding: 30px 18px;
-    border-radius: 28px;
-  }
-
-  .booking-card h2 {
-    font-size: 22px;
-  }
-
-  .booking-card p {
-    font-size: 10px;
-    margin-bottom: 20px;
-  }
-
-  .booking-card label {
-    font-size: 12px;
-  }
-
-  .booking-card .muva-btn {
-    min-width: 210px;
-    padding: 14px 22px;
-    font-size: 11px;
-  }
-}
-@media (max-width: 1199px) {
-  .booking-model {
-    right: 80px;
-    width: 420px;
-    max-width: 42%;
-  }
-}
-
-@media (max-width: 991px) {
-  .booking-card {
-    margin: 0;
-    padding: 35px 25px;
-    min-height: auto;
-  }
-
-  .booking-card form {
-    max-width: 520px;
-  }
-
-  .booking-model {
-    display: none;
-  }
-}
-
-@media (max-width: 575px) {
-  .booking-card {
-    padding: 30px 18px;
-    border-radius: 28px;
-  }
-
-  .booking-card h2 {
-    font-size: 22px;
-  }
-
-  .booking-card p {
-    font-size: 10px;
-    margin-bottom: 20px;
-  }
-
-  .booking-card label {
-    font-size: 12px;
-  }
-
-  .booking-card .muva-btn {
-    min-width: 210px;
-    padding: 14px 22px;
-    font-size: 11px;
-  }
-}
-@media (max-width: 991px) {
   .footer-section {
     padding-top: 70px;
   }
@@ -1199,6 +1049,205 @@ body {
 }
 
 @media (max-width: 575px) {
+  body {
+    font-size: 13px;
+  }
+
+  .brand span {
+    font-size: 50px;
+  }
+
+  .brand small {
+    font-size: 13px;
+  }
+
+  .page-block {
+    padding-top: 115px;
+  }
+
+  .hero-section {
+    padding-top: 125px;
+  }
+
+  .hero-card {
+    min-height: 560px;
+    padding: 34px 18px 32px;
+    border-radius: 30px;
+  }
+
+  .hero-model {
+    width: min(400px, 96vw);
+    margin: 0 auto 18px;
+  }
+
+  .hero-copy h1 {
+    font-size: 25px;
+    line-height: 1.08;
+  }
+
+  .hero-copy p {
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  .muva-btn {
+    padding: 14px 24px;
+  }
+
+  .slider-dots {
+    margin-top: 28px;
+  }
+
+  .slider-dots span {
+    width: 21px;
+    height: 21px;
+  }
+
+  .about-video,
+  .about-img {
+    height: 150px;
+  }
+
+  .about-card h2 {
+    font-size: 30px;
+  }
+
+  .results-section h2 {
+    font-size: 28px;
+  }
+
+  .result-item {
+    align-items: flex-start;
+  }
+
+  .services-section {
+    padding-top: 45px;
+  }
+
+  .services-section .section-title {
+    font-size: 24px;
+    margin-bottom: 22px;
+  }
+
+  .services-grid,
+  .services-section .row {
+    --bs-gutter-x: 12px;
+    --bs-gutter-y: 18px;
+  }
+
+  .service-card-body {
+    height: 142px;
+    border-radius: 15px;
+    padding: 11px 8px 9px;
+  }
+
+  .service-card h3 {
+    font-size: 12px;
+    min-height: 29px;
+  }
+
+  .service-card img {
+    height: 85px;
+    border-radius: 10px;
+  }
+
+  .service-more {
+    height: 25px;
+    font-size: 10px;
+  }
+
+  .facials-page-section {
+    padding-top: 125px;
+  }
+
+  .service-detail-heading h1,
+  .service-detail-heading h2 {
+    font-size: 25px;
+  }
+
+  .service-detail-heading p {
+    font-size: 11px;
+    line-height: 1.25;
+  }
+
+  .facial-options-row {
+    --bs-gutter-x: 12px;
+    --bs-gutter-y: 18px;
+  }
+
+  .facial-option-card {
+    border-radius: 15px;
+    padding: 12px 8px 10px;
+    min-height: 160px;
+  }
+
+  .facial-option-card h3 {
+    font-size: 13px;
+    min-height: 29px;
+  }
+
+  .facial-option-card img {
+    height: 90px;
+    border-radius: 10px;
+  }
+
+  .facial-option-card p {
+    font-size: 9px;
+    line-height: 1.15;
+  }
+
+  .facial-option-card:hover,
+  .facial-option-card:focus,
+  .facial-option-card.is-active {
+    min-height: 270px;
+  }
+
+  .experience-section h2 {
+    font-size: 22px;
+    margin-bottom: 44px;
+  }
+
+  .experience-card {
+    height: 130px;
+  }
+
+  .experience-model {
+    top: 160px;
+  }
+
+  .experience-btn {
+    margin-top: 55px;
+  }
+
+  .testimonial-title-card,
+  .testimonial-card {
+    width: 190px;
+  }
+
+  .booking-card {
+    padding: 30px 18px;
+    border-radius: 28px;
+  }
+
+  .booking-card h2 {
+    font-size: 22px;
+  }
+
+  .booking-card p {
+    font-size: 10px;
+    margin-bottom: 20px;
+  }
+
+  .booking-card label {
+    font-size: 12px;
+  }
+
+  .booking-card .muva-btn {
+    min-width: 210px;
+    padding: 14px 22px;
+    font-size: 11px;
+  }
+
   .footer-card {
     padding: 30px 18px;
   }
@@ -1221,5 +1270,9 @@ body {
 
   .map-img {
     height: 130px;
+  }
+
+  .social-rail {
+    display: none;
   }
 }
