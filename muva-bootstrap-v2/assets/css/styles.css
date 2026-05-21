@@ -29,7 +29,7 @@ body {
 
 .site-header {
   height: 82px;
-  background: rgba(255, 255, 255, .96);
+  background: rgba(255, 255, 255, 0.96);
   border-top: 1px solid #dedede;
   z-index: 1030;
 }
@@ -43,7 +43,7 @@ body {
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  line-height: .8;
+  line-height: 0.8;
   margin-left: 58px;
   margin-top: -3px;
 }
@@ -62,7 +62,7 @@ body {
   font-size: 18px;
   color: #111;
   font-weight: 600;
-  letter-spacing: -.5px;
+  letter-spacing: -0.5px;
 }
 
 .navbar-nav {
@@ -149,7 +149,7 @@ body {
   font-size: 33px;
   line-height: 1.1;
   font-weight: 600;
-  letter-spacing: .2px;
+  letter-spacing: 0.2px;
   margin: 0;
 }
 
@@ -214,11 +214,12 @@ body {
   padding: 50px 70px;
 }
 
-.about-img {
+.about-video {
   width: 430px;
   max-width: 100%;
   height: 200px;
   object-fit: cover;
+  display: block;
 }
 
 .about-card h2 {
@@ -318,7 +319,7 @@ body {
 
 .service-card h3 {
   font-size: 14px;
-  line-height: .95;
+  line-height: 0.95;
   font-weight: 800;
   min-height: 32px;
   margin: 0 0 8px;
@@ -374,7 +375,7 @@ body {
 }
 
 .experience-card {
-  height: 188px;
+  height: 137px;
   margin: 0 12px;
 }
 
@@ -383,7 +384,7 @@ body {
   left: 145px;
   right: 0;
   margin: auto;
-  top: 172px;
+  bottom: 35px;
   width: min(850px, 82vw);
   z-index: 2;
 }
@@ -528,7 +529,7 @@ body {
 .booking-card input {
   flex: 1;
   border: 0;
-  border-bottom: 3px solid rgba(255, 255, 255, .78);
+  border-bottom: 3px solid rgba(255, 255, 255, 0.78);
   background: transparent;
   height: 18px;
   outline: 0;
@@ -575,7 +576,7 @@ body {
   font-family: "Playfair Display", Georgia, serif;
   color: #fff;
   font-size: 68px;
-  line-height: .82;
+  line-height: 0.82;
   letter-spacing: -3px;
   font-weight: 700;
 }
@@ -715,7 +716,7 @@ body {
     background: #fff;
     padding: 20px;
     border-radius: 16px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, .08);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
   }
 
   .search-item i {
@@ -862,7 +863,7 @@ body {
     height: 21px;
   }
 
-  .about-img {
+  .about-video {
     height: 150px;
   }
 
