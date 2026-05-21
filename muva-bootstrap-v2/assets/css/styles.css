@@ -528,30 +528,69 @@ body {
 
 .testimonials-section {
   padding-top: 30px;
+  overflow: hidden;
 }
 
-.testimonial-row {
+.testimonials-container {
+  position: relative;
+  max-width: 1210px;
+  overflow: hidden;
+}
+
+.testimonial-controls {
+  position: absolute;
+  top: 8px;
+  right: 55px;
+  z-index: 5;
   display: flex;
   gap: 12px;
+}
+
+.testimonial-control {
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: #d6c5b8;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.testimonial-control:hover {
+  background: #111;
+  transform: scale(1.05);
+}
+
+.testimonial-slider {
+  display: flex;
+  gap: 16px;
   align-items: stretch;
-  margin-left: 210px;
-  min-width: 850px;
+  width: max-content;
+  padding: 65px 0 12px 210px;
+  transition: transform 0.55s ease;
+  will-change: transform;
 }
 
 .testimonial-title-card,
 .testimonial-card {
+  flex: 0 0 310px;
   background: #f1e7e1;
   border-radius: 18px;
-  width: 230px;
   min-height: 164px;
-  padding: 20px;
+  padding: 24px;
 }
 
 .testimonial-title-card h2 {
-  font-size: 31px;
-  line-height: 1.05;
+  font-size: 35px;
+  line-height: 1.08;
   font-weight: 800;
-  margin: 0 0 25px;
+  margin: 0 0 34px;
 }
 
 .client-stack {
@@ -559,29 +598,30 @@ body {
   align-items: center;
 }
 
-.client-stack span {
-  width: 33px;
-  height: 33px;
+.client-stack img {
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #d2a28e, #eee);
+  object-fit: cover;
   border: 2px solid #f1e7e1;
-  margin-left: -9px;
+  margin-left: -10px;
 }
 
-.client-stack span:first-child {
+.client-stack img:first-child {
   margin-left: 0;
 }
 
 .client-stack b {
-  width: 41px;
-  height: 41px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: #111;
   color: #fff;
   display: grid;
   place-items: center;
   margin-left: -8px;
-  font-size: 18px;
+  font-size: 22px;
+  font-weight: 800;
 }
 
 .testimonial-card {
@@ -589,26 +629,50 @@ body {
 }
 
 .testimonial-card img {
-  width: 58px;
-  height: 58px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   object-fit: cover;
-  margin-top: -5px;
+  margin-top: -3px;
 }
 
 .testimonial-card h3 {
-  font-size: 19px;
+  font-size: 22px;
+  line-height: 1;
   font-weight: 800;
-  margin: 7px 0 3px;
+  margin: 12px 0 8px;
 }
 
 .testimonial-card p {
-  font-size: 9px;
-  line-height: 1.15;
-  font-weight: 700;
-  margin: 0;
+  font-size: 11px;
+  line-height: 1.18;
+  font-weight: 800;
+  margin: 0 auto;
+  max-width: 235px;
 }
 
+.testimonial-card {
+  animation: testimonialFloat 4s ease-in-out infinite;
+}
+
+.testimonial-card:nth-child(2n) {
+  animation-delay: 0.4s;
+}
+
+.testimonial-card:nth-child(3n) {
+  animation-delay: 0.8s;
+}
+
+@keyframes testimonialFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
 /* =========================
    BOOKING
 ========================= */
@@ -668,6 +732,12 @@ body {
   background: transparent;
   height: 18px;
   outline: 0;
+  color: #111;
+  font-weight: 700;
+}
+
+.booking-card input:focus {
+  border-bottom-color: #fff;
 }
 
 .booking-card .muva-btn {
@@ -675,6 +745,8 @@ body {
   margin: 35px auto 33px;
   padding: 16px 31px;
   min-width: 235px;
+  position: relative;
+  z-index: 3;
 }
 
 .booking-model {
@@ -684,8 +756,8 @@ body {
   width: 455px;
   max-width: 43%;
   z-index: 1;
+  pointer-events: none;
 }
-
 /* =========================
    FOOTER
 ========================= */
@@ -1296,4 +1368,65 @@ body {
 .facial-option-card:focus .treatment-note,
 .facial-option-card.is-active .treatment-note {
   display: block;
+}
+@media (max-width: 991px) {
+  .testimonial-controls {
+    right: 20px;
+    top: 8px;
+  }
+
+  .testimonial-slider {
+    padding-left: 0;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    width: auto;
+    padding-bottom: 16px;
+  }
+
+  .testimonial-title-card,
+  .testimonial-card {
+    flex: 0 0 260px;
+  }
+
+  .testimonial-title-card h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 575px) {
+  .testimonial-controls {
+    position: relative;
+    justify-content: center;
+    right: auto;
+    top: auto;
+    margin-bottom: 12px;
+  }
+
+  .testimonial-control {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .testimonial-slider {
+    padding-top: 0;
+  }
+
+  .testimonial-title-card,
+  .testimonial-card {
+    flex: 0 0 225px;
+    padding: 18px;
+  }
+
+  .testimonial-title-card h2 {
+    font-size: 24px;
+  }
+
+  .testimonial-card h3 {
+    font-size: 18px;
+  }
+
+  .testimonial-card p {
+    font-size: 9px;
+  }
 }
