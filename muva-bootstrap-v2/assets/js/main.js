@@ -174,3 +174,57 @@ bookingForms.forEach((form) => {
     }
   });
 });
+const heroSlides = document.querySelectorAll(".hero-slide");
+const heroDots = document.querySelectorAll(".hero-dot");
+
+if (heroSlides.length && heroDots.length) {
+  let currentHeroSlide = 0;
+  let heroInterval = null;
+
+  const showHeroSlide = (nextIndex) => {
+    if (nextIndex === currentHeroSlide) {
+      return;
+    }
+
+    const currentSlide = heroSlides[currentHeroSlide];
+    const nextSlide = heroSlides[nextIndex];
+
+    currentSlide.classList.add("is-leaving");
+    currentSlide.classList.remove("is-active");
+
+    nextSlide.classList.add("is-active");
+
+    heroDots[currentHeroSlide].classList.remove("is-active");
+    heroDots[nextIndex].classList.add("is-active");
+
+    setTimeout(() => {
+      currentSlide.classList.remove("is-leaving");
+    }, 800);
+
+    currentHeroSlide = nextIndex;
+  };
+
+  const goToNextHeroSlide = () => {
+    const nextIndex = (currentHeroSlide + 1) % heroSlides.length;
+    showHeroSlide(nextIndex);
+  };
+
+  const startHeroAutoplay = () => {
+    heroInterval = setInterval(goToNextHeroSlide, 5200);
+  };
+
+  const restartHeroAutoplay = () => {
+    clearInterval(heroInterval);
+    startHeroAutoplay();
+  };
+
+  heroDots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      const nextIndex = Number(dot.dataset.slide);
+      showHeroSlide(nextIndex);
+      restartHeroAutoplay();
+    });
+  });
+
+  startHeroAutoplay();
+}

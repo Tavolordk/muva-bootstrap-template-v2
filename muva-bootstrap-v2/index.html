@@ -55,23 +55,51 @@
   <main>
     <section id="home" class="hero-section page-block">
       <div class="container muva-container position-relative">
-        <div class="hero-card rounded-panel">
-          <img class="hero-model" src="assets/img/hero-model.png" alt="Aesthetic treatment model">
+        <div class="hero-carousel" id="heroCarousel">
+          <article class="hero-card rounded-panel hero-slide is-active">
+            <img class="hero-model" src="assets/img/hero-model.png" alt="Aesthetic treatment model">
 
-          <div class="hero-copy">
-            <h1>Enhance your <span>beauty</span><br>with precision and <span>elegance</span></h1>
-            <p>
-              Advanced aesthetic treatments in a space designed<br class="d-none d-md-block">
-              to care for your skin, your confidence, and your essence.
-            </p>
-            <a href="#reservation" class="btn muva-btn">Book an appointment</a>
-          </div>
+            <div class="hero-copy">
+              <h1>Enhance your <span>beauty</span><br>with precision and <span>elegance</span></h1>
+              <p>
+                Advanced aesthetic treatments in a space designed<br class="d-none d-md-block">
+                to care for your skin, your confidence, and your essence.
+              </p>
+              <a href="#reservation" class="btn muva-btn">Book an appointment</a>
+            </div>
+          </article>
+
+          <article class="hero-card rounded-panel hero-slide">
+            <img class="hero-model" src="assets/img/hero-model.png" alt="Aesthetic treatment model">
+
+            <div class="hero-copy">
+              <h1>Reveal your <span>glow</span><br>with calm and <span>confidence</span></h1>
+              <p>
+                Personalized beauty rituals created to refresh your skin,<br class="d-none d-md-block">
+                soften your expression, and elevate your natural radiance.
+              </p>
+              <a href="#services" class="btn muva-btn">Explore services</a>
+            </div>
+          </article>
+
+          <article class="hero-card rounded-panel hero-slide">
+            <img class="hero-model" src="assets/img/hero-model.png" alt="Aesthetic treatment model">
+
+            <div class="hero-copy">
+              <h1>Luxury care for<br>your <span>skin</span> and <span>well-being</span></h1>
+              <p>
+                A refined aesthetic experience focused on natural results,<br class="d-none d-md-block">
+                premium treatments, and a peaceful moment made for you.
+              </p>
+              <a href="#reservation" class="btn muva-btn">Start your experience</a>
+            </div>
+          </article>
         </div>
 
-        <div class="slider-dots">
-          <span></span>
-          <span></span>
-          <span></span>
+        <div class="slider-dots hero-dots" aria-label="Hero carousel navigation">
+          <button class="hero-dot is-active" type="button" data-slide="0" aria-label="Slide 1"></button>
+          <button class="hero-dot" type="button" data-slide="1" aria-label="Slide 2"></button>
+          <button class="hero-dot" type="button" data-slide="2" aria-label="Slide 3"></button>
         </div>
       </div>
     </section>

@@ -1533,3 +1533,125 @@ body {
 .booking-card input[type="time"]::-webkit-datetime-edit-fields-wrapper {
   padding: 0 !important;
 }
+/* =========================
+   HERO CAROUSEL ANIMATION
+========================= */
+
+.hero-carousel {
+  position: relative;
+  min-height: 318px;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(34px) scale(0.985);
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s ease,
+    visibility 0.75s ease;
+}
+
+.hero-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0) scale(1);
+  z-index: 2;
+}
+
+.hero-slide.is-leaving {
+  opacity: 0;
+  transform: translateX(-34px) scale(0.985);
+}
+
+.hero-slide .hero-copy {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.65s ease 0.18s,
+    transform 0.65s ease 0.18s;
+}
+
+.hero-slide.is-active .hero-copy {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-slide .hero-model {
+  opacity: 0;
+  transform: translateX(24px) scale(0.98);
+  transition:
+    opacity 0.75s ease 0.15s,
+    transform 0.75s ease 0.15s;
+}
+
+.hero-slide.is-active .hero-model {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+.hero-dots {
+  position: relative;
+  z-index: 8;
+}
+
+.hero-dot {
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--muva-beige);
+  cursor: pointer;
+  opacity: 0.75;
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.hero-dot:hover,
+.hero-dot.is-active {
+  opacity: 1;
+  transform: scale(1.12);
+  background: #b89d8a;
+}
+
+.hero-dot.is-active {
+  box-shadow: 0 0 0 6px rgba(214, 197, 184, 0.28);
+}
+
+.slider-dots span {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .hero-carousel {
+    min-height: 560px;
+  }
+
+  .hero-slide {
+    position: absolute;
+    height: 100%;
+  }
+
+  .hero-slide .hero-model {
+    transform: translateY(12px) scale(0.98);
+  }
+
+  .hero-slide.is-active .hero-model {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 575px) {
+  .hero-dot {
+    width: 21px;
+    height: 21px;
+  }
+
+  .hero-dot.is-active {
+    box-shadow: 0 0 0 5px rgba(214, 197, 184, 0.28);
+  }
+}
