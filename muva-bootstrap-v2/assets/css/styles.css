@@ -2094,3 +2094,95 @@ body {
     pointer-events: auto;
   }
 }
+.coming-soon-notice {
+  padding: 150px 0 40px;
+}
+
+.coming-soon-card {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 42px 36px;
+  border-radius: 34px;
+  background: #d6c5b8;
+  text-align: center;
+}
+
+.coming-soon-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.coming-soon-card h1 {
+  margin: 0 0 14px;
+  color: #fff;
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 0.95;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.coming-soon-card p {
+  max-width: 620px;
+  margin: 0 auto 26px;
+  color: #1b1f24;
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.coming-soon-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.coming-soon-actions .muva-btn {
+  min-width: 210px;
+}
+
+.coming-soon-secondary {
+  background: #f4eee9;
+  color: #111;
+}
+
+.coming-soon-secondary:hover,
+.coming-soon-secondary:focus {
+  background: #111;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .coming-soon-notice {
+    padding: 125px 0 28px;
+  }
+
+  .coming-soon-card {
+    padding: 32px 22px;
+    border-radius: 28px;
+  }
+
+  .coming-soon-card p {
+    font-size: 14px;
+  }
+
+  .coming-soon-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .coming-soon-actions .muva-btn {
+    width: 100%;
+    min-width: 0;
+  }
+}
