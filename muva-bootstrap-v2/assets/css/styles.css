@@ -2219,3 +2219,27 @@ body {
     height: 190px;
   }
 }
+
+@media (min-width: 992px) {
+  .hero-model {
+    top: -10px;
+  }
+
+  .slider-dots,
+  .hero-dots {
+    margin-top: 58px;
+    transform: translateY(-42px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-model {
+    top: -24px;
+  }
+
+  .slider-dots,
+  .hero-dots {
+    margin-top: 48px;
+    transform: translateY(-55px);
+  }
+}
