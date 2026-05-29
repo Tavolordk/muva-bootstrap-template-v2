@@ -2186,3 +2186,36 @@ body {
     min-width: 0;
   }
 }
+@media (min-width: 992px) {
+  .footer-map-column {
+    padding-top: 22px;
+  }
+
+  .map-img,
+  .map-embed {
+    width: 100%;
+    max-width: none;
+    height: 168px;
+  }
+
+  .address {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .map-img,
+  .map-embed {
+    height: 178px;
+  }
+}
+
+@media (max-width: 991px) {
+  .map-img,
+  .map-embed {
+    width: 100%;
+    max-width: none;
+    height: 190px;
+  }
+}
